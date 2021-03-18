@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import styled from 'styled-components';
 import {useAuth} from '../context/AuthContext'
 import {Link, useHistory} from 'react-router-dom'
-
+import {Login, Headline,CardContainer, StyledLink,  Label, Input, Button, Alert, Form, FormGroup} from '../Assets/Styles'
 const Signup = () => {
 
     const history = useHistory()
@@ -15,9 +15,13 @@ const Signup = () => {
    async function handleSubmit(e){
         e.preventDefault()
 
-        if(passwordRef.current.value !== confirmPasswordRef.current.value){
-            return setError('Password do not match!')
+        if(passwordRef.current.value.length <= 5 || confirmPasswordRef.current.value.length <=6){
+            return setError('Password is too small')
         }
+        else if(passwordRef.current.value !== confirmPasswordRef.current.value){
+            return setError('Password do not match!')
+        } 
+
         try{ 
             setError('')
             setLoading(true)
@@ -29,6 +33,7 @@ const Signup = () => {
         }
          setLoading(false)
     }
+
 
     return (
         <>
@@ -43,7 +48,7 @@ const Signup = () => {
                     </FormGroup>
                     <FormGroup>
                         <Label>Password</Label>
-                        <Input type="password" ref={passwordRef} required/>
+                        <Input type="password" ref={passwordRef} required />
                     </FormGroup>
                     <FormGroup>
                         <Label>Confirm Password</Label>
@@ -51,11 +56,12 @@ const Signup = () => {
                     </FormGroup>
                     <Button type="submit" disabled={loading}>Sign Up</Button>
                 </Form>
+                <Login>
+            Already have an account? <StyledLink to="/login">Log In</StyledLink>
+        </Login>
             </CardContainer>
         </Card>
-        <Login>
-            Already have an account? <Link to="/login">Log In</Link>
-        </Login>
+
         </>
     );
 }
@@ -63,31 +69,6 @@ const Signup = () => {
 const Card = styled.div`
 
 `
-const CardContainer = styled.div`
 
-`
-const Headline = styled.h2`
 
-`
-const Form = styled.form`
-
-`
-const FormGroup = styled.div`
-
-`
-const Label = styled.label`
-
-`
-const Input = styled.input`
-
-`
-const Button = styled.button`
-
-`
-const Login = styled.div`
-
-`
-const Alert = styled.h3`
-color: red;
-`
 export default Signup;

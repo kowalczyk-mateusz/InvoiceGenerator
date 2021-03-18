@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import styled from 'styled-components';
 import {useAuth} from '../context/AuthContext'
 import {Link, useHistory} from 'react-router-dom'
+import {SignUp, Headline, Label,CardContainer,StyledLink,  ForgotPassword, Input, Button, Alert, Form, FormGroup} from '../Assets/Styles'
 
 const Login = () => {
     const emailRef = useRef()
@@ -41,14 +42,16 @@ const Login = () => {
                     </FormGroup>
                     <Button type="submit" disabled={loading}>Log In</Button>
                 </Form>
+                <SignUp>
+            Need an account? <StyledLink to="/signup">Sign Up</StyledLink>
+        </SignUp>
+        <ForgotPassword>
+            <StyledLink to ="/forgot-password">Forgot password?</StyledLink>
+        </ForgotPassword>
             </CardContainer>
         </Card>
-        <div>
-            <Link to ="/forgot-password">Forgot password?</Link>
-        </div>
-        <SignUp>
-            Need an account? <Link to="/signup">Sign Up</Link>
-        </SignUp>
+
+
         </>
     );
 }
@@ -56,31 +59,6 @@ const Login = () => {
 const Card = styled.div`
 
 `
-const CardContainer = styled.div`
 
-`
-const Headline = styled.h2`
 
-`
-const Form = styled.form`
-
-`
-const FormGroup = styled.div`
-
-`
-const Label = styled.label`
-
-`
-const Input = styled.input`
-
-`
-const Button = styled.button`
-
-`
-const SignUp = styled.div`
-
-`
-const Alert = styled.h3`
-color: red;
-`
 export default Login;

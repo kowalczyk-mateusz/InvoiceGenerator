@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import styled from 'styled-components';
 import {useAuth} from '../context/AuthContext'
 import {Link, useHistory} from 'react-router-dom'
+import {Login, Headline,CardContainer, StyledLink, Label, Input, Button, Alert, Form, FormGroup} from '../Assets/Styles'
 
 const UpdateProfile = () => {
 
@@ -60,11 +61,12 @@ const UpdateProfile = () => {
                     </FormGroup>
                     <Button type="submit" disabled={loading}>Sign Up</Button>
                 </Form>
+                <Login>
+             <StyledLink to="/">Cancel</StyledLink>
+        </Login>
             </CardContainer>
         </Card>
-        <Login>
-             <Link to="/">Cancel</Link>
-        </Login>
+
         </>
     );
 }
@@ -72,31 +74,5 @@ const UpdateProfile = () => {
 const Card = styled.div`
 
 `
-const CardContainer = styled.div`
 
-`
-const Headline = styled.h2`
-
-`
-const Form = styled.form`
-
-`
-const FormGroup = styled.div`
-
-`
-const Label = styled.label`
-
-`
-const Input = styled.input`
-
-`
-const Button = styled.button`
-
-`
-const Login = styled.div`
-
-`
-const Alert = styled.h3`
-color: red;
-`
 export default UpdateProfile;

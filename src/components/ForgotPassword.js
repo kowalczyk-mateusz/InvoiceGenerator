@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import styled from 'styled-components';
 import {useAuth} from '../context/AuthContext'
 import {Link} from 'react-router-dom'
+import {SignUp, Headline, Login,  Label, StyledLink,  CardContainer,  Input, Button, Alert, Form, FormGroup} from '../Assets/Styles'
 
 const ForgotPassword = () => {
     const emailRef = useRef()
@@ -37,14 +38,15 @@ const ForgotPassword = () => {
                     </FormGroup>
                     <Button type="submit" disabled={loading}>Reset Password</Button>
                 </Form>
+                <StyledLogin>
+            <StyledLink to ="/login">Login</StyledLink>
+        </StyledLogin>
+        <SignUp>
+            Need an account? <StyledLink to="/signup">Sign Up</StyledLink>
+        </SignUp>
             </CardContainer>
         </Card>
-        <div>
-            <Link to ="/login">Login</Link>
-        </div>
-        <SignUp>
-            Need an account? <Link to="/signup">Sign Up</Link>
-        </SignUp>
+
         </>
     );
 }
@@ -52,31 +54,13 @@ const ForgotPassword = () => {
 const Card = styled.div`
 
 `
-const CardContainer = styled.div`
+const StyledLogin = styled.div`
+font-size: 1rem;
+text-align: center;
+padding-top: 0.5rem;
+font-weight: bold;
+color: black;
+`
 
-`
-const Headline = styled.h2`
 
-`
-const Form = styled.form`
-
-`
-const FormGroup = styled.div`
-
-`
-const Label = styled.label`
-
-`
-const Input = styled.input`
-
-`
-const Button = styled.button`
-
-`
-const SignUp = styled.div`
-
-`
-const Alert = styled.h3`
-color: red;
-`
 export default ForgotPassword;

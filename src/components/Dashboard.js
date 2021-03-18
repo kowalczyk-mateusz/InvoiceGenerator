@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useAuth} from '../context/AuthContext'
 import {Link, useHistory} from 'react-router-dom'
-
+import {Button, StyledLink} from '../Assets/Styles'
 const Dashboard = () => {
     const history = useHistory()
     const [error, setError] = useState('')
@@ -21,8 +21,8 @@ const Dashboard = () => {
       <>
 
       <div>
-          <Link to="/update-profile">Update Profile</Link>
-          <button  onClick={handleLogout}>Log Out</button>
+          <StyledLink to="/update-profile">Update Profile</StyledLink>
+          <Button  onClick={handleLogout}>Log Out</Button>
       </div>
       </>
     );
