@@ -1,29 +1,31 @@
-import React, {useState} from 'react';
-import {useAuth} from '../context/AuthContext'
-import {Link, useHistory} from 'react-router-dom'
-import {Button, StyledLink} from '../Assets/Styles'
+import React from 'react';
+import firebase from 'firebase/app'
+import Nav from './Navigation'
+import app from '../firebase'
 const Dashboard = () => {
-    const history = useHistory()
-    const [error, setError] = useState('')
-    const {currentUser, logout} = useAuth()
-    async function handleLogout(){
-        setError('')
-        try{
-            history.push('/login')
-                await logout()
-                
-        } catch {
-            setError('Failed to log out')
+
+    const masno = () =>{
+          //  firebase.database().ref('user/'+ 1).set({
+          //    name: 'dsada',
+          //    dsada: 'dsadsa',
+          //  })
+
+          firebase.database().ref('user/'+ 1).on('value', function(snapshot){
+            console.log(snapshot.val().name)
+          })
+
         }
-            
-    }
     return (
       <>
-
-      <div>
-          <StyledLink to="/update-profile">Update Profile</StyledLink>
-          <Button  onClick={handleLogout}>Log Out</Button>
-      </div>
+    <Nav />
+    <form>
+        <label for='name'>Imie</label>
+        <input type="text" name='name'/>
+        <label for='name1'>Imie</label>
+        <input type="text" name='name1'/>
+        <button type="submit">Submit</button>
+        <div onClick={masno}>dsadsadsa</div>
+    </form>
       </>
     );
 }

@@ -12,26 +12,32 @@ function App() {
   
   
   return (
-    <>
-      <Container>
-        <SignupContainer>
+    <StyledApp>
+
           <Router>
             <AuthProvider>
           <Switch>
             <PrivateRoute path="/" exact component={Dashboard} />
+            <Container>
+            <SignupContainer>
             <PrivateRoute path="/update-profile" component={UpdateProfile} />
             <Route path="/signup" component={Signup}  />
             <Route path="/login" component={Login} />
             <Route path="/forgot-password" component={ForgotPassword} />
+            </SignupContainer>
+            </Container>
           </Switch>
             </AuthProvider>
           </Router>
-    </SignupContainer>
-    </Container>
-    </>
+
+
+    </StyledApp>
   );
 }
-
+const StyledApp = styled.div`
+width: 100%;
+min-height: 100vh;
+`
 const Container = styled.div`
 display: flex;
 justify-content: center;
