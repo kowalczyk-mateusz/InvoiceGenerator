@@ -12,3 +12,7 @@ export const Select = styled.select`
 export const Option = styled.option`
 
 `
+export const Container = styled.div`
+display: flex;
+flex-direction: column;
+`

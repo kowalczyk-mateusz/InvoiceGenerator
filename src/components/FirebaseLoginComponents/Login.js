@@ -1,8 +1,8 @@
 import React, {useRef, useState} from 'react';
 import styled from 'styled-components';
-import {useAuth} from '../context/AuthContext'
+import {useAuth} from '../../context/AuthContext'
 import {Link, useHistory} from 'react-router-dom'
-import {SignUp, Headline, Label,CardContainer,StyledLink,  ForgotPassword, Input, Button, Alert, Form, FormGroup} from '../Assets/Styles'
+import {SignUp, Headline, Label,CardContainer,StyledLink,  ForgotPassword, Input, Button, Alert, Form, FormGroup} from '../../Assets/Styles'
 
 const Login = () => {
     const emailRef = useRef()

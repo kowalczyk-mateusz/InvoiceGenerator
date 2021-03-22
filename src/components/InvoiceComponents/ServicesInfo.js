@@ -11,13 +11,16 @@ const ServicesInfo = () => {
         setService({singleService: [...service.singleService, '']});
     }
     return (
-        <>
-        <h1 onClick={addNewService}>AddService</h1>
+        <StyledServicesInfo>
+        <button onClick={addNewService}>AddService</button>
         {service.singleService.map((services, index)=>(
-            <Service id={index}/>
+            <Service id={index} key={index}/>
         ))}
-        </>
+        </StyledServicesInfo>
     );
 }
-
+const StyledServicesInfo = styled.div`
+display: flex;
+justify-content: center;
+`
 export default ServicesInfo;

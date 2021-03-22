@@ -1,13 +1,13 @@
 import React from 'react';
-import Signup from './components/Signup'
+import Signup from './components/FirebaseLoginComponents/Signup'
 import styled from 'styled-components';
 import {AuthProvider} from './context/AuthContext'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Dashboard from './components/Dashboard'
-import Login from './components/Login'
-import PrivateRoute from './components/PrivateRoute'
-import ForgotPassword from './components/ForgotPassword'
-import UpdateProfile from './components/UpdateProfile'
+import Login from './components/FirebaseLoginComponents/Login'
+import PrivateRoute from './components/FirebaseLoginComponents/PrivateRoute'
+import ForgotPassword from './components/FirebaseLoginComponents/ForgotPassword'
+import UpdateProfile from './components/FirebaseLoginComponents/UpdateProfile'
 function App() {
   
   
