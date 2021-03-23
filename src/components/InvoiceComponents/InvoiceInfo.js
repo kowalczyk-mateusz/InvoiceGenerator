@@ -2,24 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 import {Label, Input, Container} from './CommonStyles'
 
-const InvoiceInfo = () => {
+const InvoiceInfo = ({invoiceHandler}) => {
     return (
         <InvoiceInfoContainer>
             <Container>
             <Label htmlFor='invoiceNumber'>Numer Faktury</Label>
-            <Input type='name' name="invoiceNumber"/>
+            <Input type='text' name="invoiceNumber" onChange={invoiceHandler}/>
             </Container>
             <Container>
             <Label htmlFor='releaseDate'>Data Wystawienia</Label>
-            <Input type='date' name="releaseDate"/>
+            <Input type='date' name="releaseDate" onChange={invoiceHandler}/>
             </Container>
             <Container>
             <Label htmlFor='saleDate'>Data Sprzedaży</Label>
-            <Input type='date' name="saleDate"/>
+            <Input type='date' name="saleDate" onChange={invoiceHandler}/>
             </Container>
             <Container>
             <Label htmlFor='city'>Miejsce wystawienia</Label>
-            <Input name="city"/>
+            <Input type='text' name="city" onChange={invoiceHandler}/>
             </Container>
         </InvoiceInfoContainer>
     );

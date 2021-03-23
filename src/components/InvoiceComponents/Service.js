@@ -2,30 +2,29 @@ import React from 'react';
 import styled from 'styled-components';
 import {Label, Input, Select, Option, Container} from './CommonStyles'
 
-const Service = ({id}) => {
-    console.log(id)
+const Service = ({id, services, serServices, handleChangeData}) => {
+    
     return (
         <StyledService>
             <Container>
-            <Label for={`serviceName${id}`}>Nazwa usługi</Label>
-            <Input name={`serviceName${id}`} type='text'/>
+            <Label for='serviceName'>Nazwa usługi</Label>
+            <Input name='serviceName' type='text' onChange={handleChangeData(id)}/>
             </Container>
             <Container>
-            <Label for={`qty${id}`}>Ilość</Label>
-            <Input name={`qty${id}`} type='number'/>
+            <Label for='qty'>Ilość</Label>
+            <Input name='qty' type='number' onChange={handleChangeData(id)}/>
             </Container>
             <Container>
-
-            <Label for={`priceNetto${id}`}>Cena Netto</Label>
-            <Input name={`priceNetto${id}`} type='number'/>
+            <Label for='priceNetto'>Cena Netto</Label>
+            <Input name='priceNetto' type='number' onChange={handleChangeData(id)}/>
             </Container>
             <Container>
-            <Label for={`priceBrutto${id}`}>Cena Brutto</Label>
-            <Input name={`priceBrutto${id}`} type='number'/>
+            <Label for='priceBrutto'>Cena Brutto</Label>
+            <Input name='priceBrutto' type='number' onChange={handleChangeData(id)}/>
             </Container>
             <Container>
-            <Label for='serviceName'>Stawka Vat</Label>
-            <Select name={`vat${id}`}>
+            <Label for='vat'>Stawka Vat</Label>
+            <Select name='vat' onChange={handleChangeData(id)}>
                 <Option>23%</Option>
                 <Option>8%</Option>
             </Select>
