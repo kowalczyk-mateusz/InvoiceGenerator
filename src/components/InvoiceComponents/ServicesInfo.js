@@ -10,13 +10,18 @@ const ServicesInfo = ({invoiceData, setInvoiceData, services, setServices}) => {
 
     })
 
+    const calculateBruttoPrice = (nettoPrice, id) => {
+        let vat = services[id].vat === 23 ? 1.23 : 1.08;
+        let price = parseFloat(nettoPrice * vat)
+        return price.toFixed(2)
+    }
     const addNewService = () =>{
         setService({singleService: [...service.singleService, '']});
         services.push({serviceName: '',
         qty: '',
         priceNetto: '',
         priceBrutto: '',
-        vat: '',})
+        vat: 23,})
 
     }
     
@@ -43,7 +48,7 @@ const ServicesInfo = ({invoiceData, setInvoiceData, services, setServices}) => {
         <button onClick={addNewService}>AddService</button>
         <StyledServices>
         {service.singleService.map((services, index)=>(
-            <Service id={index} key={index} services={services} setServices={setServices} handleChangeData={handleChangeData}/>
+            <Service id={index} key={index} services={services} setServices={setServices} handleChangeData={handleChangeData} calculateBruttoPrice={calculateBruttoPrice}/>
         ))}
         </StyledServices>
         </StyledServicesInfo>

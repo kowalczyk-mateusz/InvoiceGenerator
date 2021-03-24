@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Label, Input, Select, Option, Container} from './CommonStyles'
 
-const Service = ({id, services, serServices, handleChangeData}) => {
+const Service = ({id, services, serServices, handleChangeData, calculateBruttoPrice}) => {
     
     return (
         <StyledService>
@@ -25,10 +25,11 @@ const Service = ({id, services, serServices, handleChangeData}) => {
             <Container>
             <Label for='vat'>Stawka Vat</Label>
             <Select name='vat' onChange={handleChangeData(id)}>
-                <Option>23%</Option>
-                <Option>8%</Option>
+                <Option value={23}>23%</Option>
+                <Option value={8}>8%</Option>
             </Select>
             </Container>
+            <h1>{calculateBruttoPrice(5000, id)}</h1>
         </StyledService>
     );
 }
