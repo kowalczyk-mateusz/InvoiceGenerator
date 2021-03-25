@@ -323,27 +323,27 @@ return(
         <View style={styles.emptyView}></View>
        <View style={styles.dateContainer}>
            <View style={styles.textHeadline}><Text>Miejsce Wystawienia</Text></View>
-           <Text style={styles.boldedText}>Katowice</Text>
+           <Text style={styles.boldedText}>{printData.invoiceNumber}</Text>
            <View style={styles.textHeadline}><Text>Data Wystawienia</Text></View>
-           <Text style={styles.boldedText}>15-12-2020</Text>
+           <Text style={styles.boldedText}>{printData.releaseDate}</Text>
            <View style={styles.textHeadline}><Text>Data sprzedazy</Text></View>
-           <Text style={styles.boldedText}>15-12-2020</Text>
+           <Text style={styles.boldedText}>{printData.saleDate}</Text>
        </View>
        </View>
        <View style={styles.firstRow}>
            <View style={styles.sellerContainer}>
                 <View style={styles.textHeadline}><Text>Sprzedawca</Text></View>
-                <Text style={styles.text}>COMPANY</Text>
-                <Text style={styles.text}>NIP: 123456789</Text>
-                <Text style={styles.text}>Pogodna 13/56</Text>
-                <Text style={styles.text}>40-319 Katowice</Text>
+                <Text style={styles.text}>{printData.sellerName}</Text>
+                <Text style={styles.text}>{printData.sellerNip}</Text>
+                <Text style={styles.text}>{printData.sellerStreet}</Text>
+                <Text style={styles.text}>{printData.sellerCity} {printData.sellerCode}</Text>
            </View>
            <View style={styles.buyerContainer}>
                 <View style={styles.textHeadline}><Text>Nabywca</Text></View>
-                <Text style={styles.text}>COMPANY COMPANY COMPANY COMPANY COMPANY</Text>
-                <Text style={styles.text}>NIP: 123456789</Text>
-                <Text style={styles.text}>Pogodna 13/56</Text>
-                <Text style={styles.text}>40-319 Katowice</Text>
+                <Text style={styles.text}>{printData.buyerName}</Text>
+                <Text style={styles.text}>{printData.buyerNip}</Text>
+                <Text style={styles.text}>{printData.buyerStreet}</Text>
+                <Text style={styles.text}>{printData.buyerCity} {printData.buyerCode}</Text>
            </View>
 
        </View>
@@ -362,13 +362,13 @@ return(
         </View>
         <View style={styles.serviceContainer}>
             <View style={styles.singleService}>
-                <View style={styles.serviceLp}><Text style={styles.serviceText}>1</Text></View>
-                <View style={styles.serviceServiceName}><Text style={styles.serviceText}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt quo id iste.</Text></View>
+                <View style={styles.serviceLp}><Text style={styles.serviceText}>{printData.services[0].qty}</Text></View>
+                <View style={styles.serviceServiceName}><Text style={styles.serviceText}>{printData.services[0].serviceName}</Text></View>
                 <View style={styles.serviceJm}><Text style={styles.serviceText}>szt.</Text></View>
                 <View style={styles.serviceQty}><Text style={styles.serviceText}>1</Text></View>
-                <View style={styles.servicePriceNetto}><Text style={styles.serviceText}>3 425,93</Text></View>
-                <View style={styles.serviceValueNetto}><Text style={styles.serviceText}>3425,93</Text></View>
-                <View style={styles.serviceVat}><Text style={styles.serviceText}>8%</Text></View>
+                <View style={styles.servicePriceNetto}><Text style={styles.serviceText}>{printData.services[0].priceNetto}</Text></View>
+                <View style={styles.serviceValueNetto}><Text style={styles.serviceText}>{printData.services[0].priceBrutto}</Text></View>
+                <View style={styles.serviceVat}><Text style={styles.serviceText}>{printData.services[0].vat}</Text></View>
                 <View style={styles.serviceVatPrice}><Text style={styles.serviceText}>274,07</Text></View>
                 <View style={styles.serviceValueBrutto}><Text style={styles.serviceText}>3 700,00</Text></View>
             </View>
@@ -421,15 +421,15 @@ return(
            <View style={styles.paymentMethod}>
                <View style={styles.paymentRow}>
                <Text style={styles.paymentTextFirst}>Sposob platnosci</Text>
-               <Text style={styles.paymentText}>przelew</Text>
+               <Text style={styles.paymentText}>{printData.paymentMethod}</Text>
                </View>
                <View  style={styles.paymentRow}>
                <Text style={styles.paymentTextFirst}>Termin platnosci</Text>
-               <Text style={styles.paymentText}>14 dni</Text>
+               <Text style={styles.paymentText}>{printData.paymentDeadline}</Text>
                </View>
                <View  style={styles.paymentRow}>
                <Text style={styles.paymentTextFirst}>Numer Konta</Text>
-               <Text style={styles.paymentText}>00 0000 0000 0000 0000 0000 0000 </Text>
+               <Text style={styles.paymentText}>{printData.accountNumber} </Text>
                </View>
            </View>
            <View style={styles.paymentOverall}>

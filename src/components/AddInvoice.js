@@ -72,6 +72,7 @@ const AddInvoice = () => {
 
       }
 
+      console.log(printData)
     return (
         <InvoiceContainer>
             <InvoiceInfo invoiceHandler={invoiceHandler} invoiceData={invoiceData}/>
@@ -81,10 +82,11 @@ const AddInvoice = () => {
             <PaymentInfo invoiceHandler={invoiceHandler} invoiceData={invoiceData}/>
             <button onClick={addInvoice(invoiceData)}>DODAJ Fakture</button>
             <button onClick={saveInvoice}>Zapisz Dane i pobierz</button>
-
+            {!loading && (
             <PDFDownloadLink document={<MyDocument printData={printData}/>} fileName='Invoice.pdf'>
             {({blob, url, error})=> (loading ? 'Loading document...' : 'Download now!')}
-             </PDFDownloadLink>
+             </PDFDownloadLink>)}
+   
         </InvoiceContainer>
     );
 }
