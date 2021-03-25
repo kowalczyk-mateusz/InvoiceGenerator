@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     }, 
     headlineText: {
-        fontSize: 35,
+        fontSize: 28,
         fontWeight: 'bold',
         textAlign: 'center'
     }, 
@@ -253,6 +253,52 @@ const styles = StyleSheet.create({
             borderBottomWidth: '1',
             borderBottomColor: '#000',
 
+        }, 
+        payment: {
+            marginTop: 25,
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+        },
+        paymentMethod: {
+            width: '250px',
+            flexDirection: 'column',
+        }, 
+        paymentOverall: {
+            width: '250px',
+            flexDirection: 'column',
+        },
+        paymentRow: {
+            flexDirection: 'row',
+            width: '100%',
+            borderTopStyle: 'solid',
+            borderTopWidth: '1',
+            borderTopColor: '#000',
+            justifyContent: 'flex-start',
+            paddingTop: 5,
+            paddingBottom: 5,
+        },
+        paymentText: {
+            fontSize: 10,
+            width: '65%',
+        },
+        paymentTextFirst: {
+            fontSize: 10,
+            width: '35%',
+        }, 
+        signature: {
+            fontSize: 7,
+            marginTop: 45,
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+        }, 
+        singleSignature: {
+            width: '250px',
+            borderTopStyle: 'solid',
+            borderTopWidth: '1',
+            borderTopColor: '#000',
+            textAlign: 'center',
         }
         
 });
@@ -373,35 +419,35 @@ return(
         </View>
        <View style={styles.payment}>
            <View style={styles.paymentMethod}>
-               <View>
-               <Text>Sposob płatności</Text>
-               <Text>przelew</Text>
+               <View style={styles.paymentRow}>
+               <Text style={styles.paymentTextFirst}>Sposob platnosci</Text>
+               <Text style={styles.paymentText}>przelew</Text>
                </View>
-               <View>
-               <Text>Termin płatnośći</Text>
-               <Text>14 dni</Text>
+               <View  style={styles.paymentRow}>
+               <Text style={styles.paymentTextFirst}>Termin platnosci</Text>
+               <Text style={styles.paymentText}>14 dni</Text>
                </View>
-               <View>
-               <Text>Numer Konta</Text>
-               <Text>00 0000 0000 0000 0000 0000 0000 </Text>
+               <View  style={styles.paymentRow}>
+               <Text style={styles.paymentTextFirst}>Numer Konta</Text>
+               <Text style={styles.paymentText}>00 0000 0000 0000 0000 0000 0000 </Text>
                </View>
            </View>
            <View style={styles.paymentOverall}>
-               <View>
-               <Text>Do Zapłaty</Text>
-               <Text>3 700,00 PLN</Text>
+               <View  style={styles.paymentRow}>
+               <Text style={styles.paymentTextFirst}>Do Zaplaty</Text>
+               <Text style={styles.paymentText}>3 700,00 PLN</Text>
                </View>
-               <View>
-               <Text>Słownie</Text>
-               <Text>trzy tysiące siedemset 00/100PLN</Text>
+               <View  style={styles.paymentRow}>
+               <Text style={styles.paymentTextFirst}>Slownie</Text>
+               <Text style={styles.paymentText}>trzy tysiace siedemset 00/100PLN</Text>
                </View>
            </View>
        </View>
        <View style={styles.signature}>
-           <View>
+           <View style={styles.singleSignature}>
                <Text>Podpis odoby upoważnionej do wystawienia</Text>
            </View>
-           <View>
+           <View  style={styles.singleSignature}>
                <Text>Podpis osoby upoważnionej do odbioru</Text>
            </View>
        </View>
