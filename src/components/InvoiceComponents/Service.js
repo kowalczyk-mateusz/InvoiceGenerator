@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Label, Input, Select, Option, Container} from './CommonStyles'
+import {nettoValue, bruttoValue} from '../../Assets/Calculations'
 
-const Service = ({id, services, serServices, handleChangeData, calculateBruttoPrice}) => {
+const Service = ({id, services,invoiceData, serServices, handleChangeData}) => {
+    
+
     
     return (
         <StyledService>
@@ -16,11 +19,11 @@ const Service = ({id, services, serServices, handleChangeData, calculateBruttoPr
             </Container>
             <Container>
             <Label for='priceNetto'>Cena Netto</Label>
-            <Input name='priceNetto' type='number' onChange={handleChangeData(id)}/>
+            <Input name='priceNetto' type='number' onChange={handleChangeData(id)} value={nettoValue(invoiceData.services[0].vat,invoiceData.services[0].priceBrutto,invoiceData.services[0].priceNetto)}/>
             </Container>
             <Container>
             <Label for='priceBrutto'>Cena Brutto</Label>
-            <Input name='priceBrutto' type='number' onChange={handleChangeData(id)}/>
+            <Input name='priceBrutto' type='number' onChange={handleChangeData(id)} value={bruttoValue(invoiceData.services[0].vat,invoiceData.services[0].priceNetto, invoiceData.services[0].priceBrutto)}/>
             </Container>
             <Container>
             <Label for='vat'>Stawka Vat</Label>
@@ -29,7 +32,7 @@ const Service = ({id, services, serServices, handleChangeData, calculateBruttoPr
                 <Option value={8}>8%</Option>
             </Select>
             </Container>
-            <h1>{calculateBruttoPrice(5000, id)}</h1>
+            
         </StyledService>
     );
 }

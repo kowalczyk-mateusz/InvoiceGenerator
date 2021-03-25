@@ -81,6 +81,7 @@ const AddInvoice = () => {
             <PaymentInfo invoiceHandler={invoiceHandler} invoiceData={invoiceData}/>
             <button onClick={addInvoice(invoiceData)}>DODAJ Fakture</button>
             <button onClick={saveInvoice}>Zapisz Dane i pobierz</button>
+
             <PDFDownloadLink document={<MyDocument printData={printData}/>} fileName='Invoice.pdf'>
             {({blob, url, error})=> (loading ? 'Loading document...' : 'Download now!')}
              </PDFDownloadLink>
@@ -91,4 +92,5 @@ const AddInvoice = () => {
 const InvoiceContainer = styled.div`
 
 `
+
 export default AddInvoice;

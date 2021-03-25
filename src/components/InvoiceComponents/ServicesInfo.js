@@ -48,7 +48,7 @@ const ServicesInfo = ({invoiceData, setInvoiceData, services, setServices}) => {
         <button onClick={addNewService}>AddService</button>
         <StyledServices>
         {service.singleService.map((services, index)=>(
-            <Service id={index} key={index} services={services} setServices={setServices} handleChangeData={handleChangeData} calculateBruttoPrice={calculateBruttoPrice}/>
+            <Service id={index} key={index} services={services} invoiceData={invoiceData} setServices={setServices} handleChangeData={handleChangeData} calculateBruttoPrice={calculateBruttoPrice}/>
         ))}
         </StyledServices>
         </StyledServicesInfo>
