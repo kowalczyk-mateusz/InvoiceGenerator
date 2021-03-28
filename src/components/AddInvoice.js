@@ -9,9 +9,12 @@ import {v4 as uuidv4} from 'uuid'
 import app from '../firebase'
 import { PDFDownloadLink} from '@react-pdf/renderer';
 import MyDocument from './Print PDf/PrintPdf'
+import {useAuth} from '../context/AuthContext'
 const AddInvoice = () => {
     
-    const ref = app.firestore().collection('Invoices')
+    const  {currentUser} = useAuth()
+    const ref = app.firestore().collection(currentUser.uid)
+
     const [services, setServices] = useState([{
         serviceName: '',
         qty: '',
@@ -72,7 +75,6 @@ const AddInvoice = () => {
 
       }
 
-      console.log(printData)
     return (
         <InvoiceContainer>
             <InvoiceInfo invoiceHandler={invoiceHandler} invoiceData={invoiceData}/>

@@ -6,23 +6,23 @@ const PaymentInfo = ({invoiceHandler, invoiceData}) => {
     return (
         <StyledPaymentInfo>
             <Container>
-            <Label for='paymentMethod'>Sposób płatności</Label>
+            <Label htmlFor='paymentMethod'>Sposób płatności</Label>
             <Input name='paymentMethod' type='text' onChange={invoiceHandler} value={invoiceData.paymentMethod}/>
             </Container>
             <Container>
-            <Label for='paymentDeadline'>Termin Płatności</Label>
+            <Label htmlFor='paymentDeadline'>Termin Płatności</Label>
             <Input name='paymentDeadline' type='text' onChange={invoiceHandler} value={invoiceData.paymentDeadline}/>
             </Container>
             <Container>
-            <Label for='accountNumber'>Numer Konta</Label>
+            <Label htmlFor='accountNumber'>Numer Konta</Label>
             <Input name='accountNumber' type='text' onChange={invoiceHandler} value={invoiceData.accountNumber}/>
             </Container>
             <Container>
-            <Label for='splitPayment'>Mechanizm Podzielonej płatnosci</Label>
+            <Label htmlFor='splitPayment'>Mechanizm Podzielonej płatnosci</Label>
             <Input name='splitPayment' type='checkbox' onChange={invoiceHandler} value={invoiceData.splitPayment}/>
             </Container>
             <Container>
-            <Label for='comments'>Uwagi</Label>
+            <Label htmlFor='comments'>Uwagi</Label>
             <Input name='comments' type='text' onChange={invoiceHandler} value={invoiceData.comments}/>
             </Container>
         </StyledPaymentInfo>

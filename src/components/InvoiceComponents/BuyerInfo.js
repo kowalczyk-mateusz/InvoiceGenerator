@@ -7,23 +7,23 @@ const BuyerInfo = ({invoiceHandler, invoiceData}) => {
         <BuyerInfoContainer>
             Nabywca:
             <Container>
-            <Label for='buyerName'>Nazwa</Label>
+            <Label htmlFor='buyerName'>Nazwa</Label>
             <Input name='buyerName' type='text' onChange={invoiceHandler} value={invoiceData.buyerName} />
             </Container>
             <Container>
-            <Label for='buyerNip'>Nip</Label>
+            <Label htmlFor='buyerNip'>Nip</Label>
             <Input name='buyerNip' type='text' onChange={invoiceHandler} value={invoiceData.buyerNip} />
             </Container>
             <Container>
-            <Label for='buyerStreet'>Ulica</Label>
+            <Label htmlFor='buyerStreet'>Ulica</Label>
             <Input name='buyerStreet' type='text' onChange={invoiceHandler} value={invoiceData.buyerStreet} />
             </Container>
             <Container>
-            <Label for='buyerCity'>Miasto</Label>
+            <Label htmlFor='buyerCity'>Miasto</Label>
             <Input name='buyerCity' type='text' onChange={invoiceHandler} value={invoiceData.buyerCity} />
             </Container>
             <Container>
-            <Label for='buyerCode'>Kod Pocztowy</Label>
+            <Label htmlFor='buyerCode'>Kod Pocztowy</Label>
             <Input name='buyerCode' type='text' onChange={invoiceHandler} value={invoiceData.buyerCode} />
             </Container>
         </BuyerInfoContainer>
