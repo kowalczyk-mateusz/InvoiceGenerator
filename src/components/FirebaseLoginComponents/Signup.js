@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import styled from 'styled-components';
 import {useAuth} from '../../context/AuthContext'
-import {Link, useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import {Login, Headline,CardContainer, StyledLink,  Label, Input, Button, Alert, Form, FormGroup} from '../../Assets/Styles'
 const Signup = () => {
 

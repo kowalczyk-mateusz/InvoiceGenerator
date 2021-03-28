@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Page, Text, View, Document, StyleSheet, Font} from '@react-pdf/renderer';
 
 
@@ -305,12 +305,7 @@ const styles = StyleSheet.create({
 
 
 const MyDocument = ({printData}) =>{
-    const masno = [
-        {name: 'dsadsa'},
-        {name: 'dsadsa'},
-        {name: 'dsadsa'},
-        {name: 'dsadsa'}
-    ]
+
     
     Font.register( {
         family: 'Open Sans',
