@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import Navigation from './Navigation'
 import {useAuth} from '../context/AuthContext'
+import {Link} from 'react-router-dom'
 import app from '../firebase'
 const Documents = () => {
 const {currentUser} = useAuth()
@@ -30,10 +31,11 @@ const [loading, setLoading] = useState(false);
         <AllDocuments>
             {loading == false &&(
                 documents.map((el)=>(
-                    <div>
+                    <Link to={`document/${el.id}`}><div>
                         <p>{el.id}</p>
                         <p>{el.invoiceNumber}</p>
                     </div>
+                    </Link>
                 ))
             )}
         </AllDocuments>
@@ -46,6 +48,11 @@ const StyledDocuments  = styled.div`
 
 `
 const AllDocuments = styled.div`
-
+div{
+    display: flex;
+    p{
+        padding-right: 2rem;
+    }
+}
 `
 export default Documents;

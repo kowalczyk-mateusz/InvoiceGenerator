@@ -9,6 +9,7 @@ import PrivateRoute from './components/FirebaseLoginComponents/PrivateRoute'
 import ForgotPassword from './components/FirebaseLoginComponents/ForgotPassword'
 import UpdateProfile from './components/FirebaseLoginComponents/UpdateProfile'
 import Documents from './components/Documents'
+import DocumentId from './components/DocumentId'
 function App() {
   
   
@@ -20,6 +21,7 @@ function App() {
           <Switch>
             <PrivateRoute path="/" exact component={Dashboard} />
             <PrivateRoute path="/documents" exact component={Documents}/>
+            <PrivateRoute path="/document/:id" exact component={DocumentId} />
             <Container>
             <SignupContainer>
             <PrivateRoute path="/update-profile" component={UpdateProfile} />

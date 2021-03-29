@@ -59,7 +59,7 @@ const AddInvoice = () => {
         setData(invoiceData)
     }, [invoiceData])
           
-    const addInvoice = () =>{
+    const addNewInvoice = () =>{
             ref.doc(data.id)
             .set(data)
       }
@@ -82,7 +82,7 @@ const AddInvoice = () => {
             <BuyerInfo invoiceHandler={invoiceHandler} invoiceData={invoiceData}/>
             <ServicesInfo invoiceData={invoiceData} setInvoiceData={setInvoiceData} services={services} setServices={setServices}/>
             <PaymentInfo invoiceHandler={invoiceHandler} invoiceData={invoiceData}/>
-            <button onClick={addInvoice(invoiceData)}>DODAJ Fakture</button>
+            <button onClick={addNewInvoice}>DODAJ Fakture</button>
             <button onClick={saveInvoice}>Zapisz Dane i pobierz</button>
             {!loading && (
             <PDFDownloadLink document={<MyDocument printData={printData}/>} fileName='Invoice.pdf'>
