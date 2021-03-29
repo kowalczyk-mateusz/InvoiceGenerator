@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import Navigation from './Navigation'
 import {useAuth} from '../context/AuthContext'
 import app from '../firebase'
 const Documents = () => {
@@ -25,7 +26,7 @@ const [loading, setLoading] = useState(false);
     return (
 
         <StyledDocuments>
-            <h1>Documents</h1>
+            <Navigation />
         <AllDocuments>
             {loading == false &&(
                 documents.map((el)=>(

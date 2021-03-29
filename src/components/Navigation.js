@@ -20,8 +20,8 @@ const Navigation = () => {
     return (
         <Nav>
             <Menu>
-                <ListItem>Wystaw Fakture</ListItem>
-                <ListItem>Dokumenty</ListItem>
+                <Link to="/"><ListItem>Wystaw Fakture</ListItem></Link>
+                <Link to="/documents"><ListItem>Dokumenty</ListItem></Link>
                 <ListItem><UpdateLink to="/update-profile">Zaaktualizuj Profil</UpdateLink></ListItem>
                 <ListItem><LogoutButton  onClick={handleLogout}>Wyloguj się</LogoutButton></ListItem>
             </Menu>
@@ -38,6 +38,9 @@ background-color: #d9edff;
 display: flex;
 padding: 0rem 5rem;
 justify-content: flex-end;
+position: sticky;
+top: 0;
+left: 0;
 `
 const LogoutButton = styled.button`
 border: 1px solid white;

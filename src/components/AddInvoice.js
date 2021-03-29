@@ -60,8 +60,8 @@ const AddInvoice = () => {
     }, [invoiceData])
           
     const addInvoice = () =>{
-        ref.doc(data.id)
-        .set(data)
+            ref.doc(data.id)
+            .set(data)
       }
     
       const [printData, setPrintData] = useState({})
