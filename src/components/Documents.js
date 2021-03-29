@@ -4,8 +4,12 @@ import Navigation from './Navigation'
 import {useAuth} from '../context/AuthContext'
 import {Link} from 'react-router-dom'
 import app from '../firebase'
+import {useDispatch} from 'react-redux'
+import {loadInvoices} from '../Actions/InvoicesAction'
 const Documents = () => {
+    const dispatch = useDispatch()
 const {currentUser} = useAuth()
+const id = currentUser.uid
 const ref = app.firestore().collection(currentUser.uid)
 const [documents, setDocuments] = useState([]);
 const [loading, setLoading] = useState(false);
@@ -22,6 +26,7 @@ const [loading, setLoading] = useState(false);
     }
     useEffect(()=>{
         getDocuments()
+        dispatch(loadInvoices(id))
     }, [])
     console.log(documents)
     return (

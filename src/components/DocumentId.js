@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {useParams} from 'react-router-dom'
 import {useAuth} from '../context/AuthContext'
 import app from '../firebase'
+import EditData from './EditingData/EditData'
 const DocumentId = () => {
     const {id} = useParams();
     const {currentUser} = useAuth()
@@ -28,7 +29,6 @@ const DocumentId = () => {
                         setSingleData(el)
                     }
                 })
-                console.log(singleData)
         }
         useEffect(()=>{
             getData()
@@ -39,13 +39,7 @@ const DocumentId = () => {
     return (
         <>
         {singleData && (
-            <>
-            <h1>{singleData.invoiceNumber}</h1>
-            <h2>{singleData.releaseDate}</h2>
-            <h2>{singleData.saleDate}</h2>
-            <h2>{singleData.sellerName}</h2>
-            <h2>{singleData.id}</h2>
-            </>
+            <EditData singleData={singleData} setSingleData={setSingleData}/>
             )}
         </>
     );
