@@ -3,18 +3,30 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {GlobalStyles} from './Assets/GlobalStyles'
-import rootReducer from './Reducers/Index'
+import store from './store/store'
 import {Provider} from 'react-redux'
-import thunk from 'redux-thunk'
-import {createStore, applyMiddleware, compose} from 'redux'
+import {ReactReduxFirebaseProvider, getFirebase} from 'react-redux-firebase'
+import {createFirestoreInstance, getFirestore} from 'redux-firestore'
+import app from './firebase'
 
-const composeEnchancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnchancer(applyMiddleware(thunk)));
+const rrfConfig = {
+  userProfile: 'users',
+  useFirestoreForProfile: true
+}
+const rrfProps = {
+  firebase: app,
+  config: rrfConfig,
+  dispatch: store.dispatch,
+  createFirestoreInstance,
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      <ReactReduxFirebaseProvider {...rrfProps}>
     <GlobalStyles />
     <App />
+    </ReactReduxFirebaseProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
