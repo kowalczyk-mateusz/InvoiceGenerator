@@ -1,5 +1,5 @@
 const initialState = {
-    invoices: [],
+    allInvoices: [],
     singleInvoice: [],
     isLoading: true,
 }
@@ -9,7 +9,7 @@ const invoiceReducer = (state = initialState, action) =>{
         case "FETCH_ALL_INVOICES" : 
         return {
             ...state,   
-            invoices: action.payload.invoices,
+            allInvoices: action.payload.allInvoices,
             isLoading: false,
         }
         case 'LOAD_INVOICES' : 

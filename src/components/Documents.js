@@ -3,40 +3,52 @@ import styled from 'styled-components';
 import Navigation from './Navigation'
 import {useAuth} from '../context/AuthContext'
 import {Link} from 'react-router-dom'
-import app from '../firebase'
-import {useDispatch} from 'react-redux'
 import {loadInvoices} from '../Actions/InvoicesAction'
+import app from '../firebase'
+import {useDispatch, useSelector} from 'react-redux'
+
 const Documents = () => {
     const dispatch = useDispatch()
-const {currentUser} = useAuth()
-const id = currentUser.uid
-const ref = app.firestore().collection(currentUser.uid)
-const [documents, setDocuments] = useState([]);
-const [loading, setLoading] = useState(false);
-    const getDocuments = ( ) =>{
-        setLoading(true)
-        ref.onSnapshot((querySnapshot) =>{
-            const items = [];
-            querySnapshot.forEach((doc)=>{
-                items.push(doc.data());
-            });
-            setDocuments(items);
-            setLoading(false);
-        })
-    }
+    const {currentUser} = useAuth()
+    const id = currentUser.uid
     useEffect(()=>{
-        getDocuments()
+        // getDocuments()
         dispatch(loadInvoices(id))
     }, [])
-    console.log(documents)
+    const {allInvoices, isLoading} = useSelector((state)=>state.invoices)
+  
+   const [data, setData] =useState([])
+
+ 
+   useEffect(()=>{
+    if(isLoading === false){
+        setData(...allInvoices)
+    }
+   }, [isLoading])
+    
+    // const ref = app.firestore().collection(currentUser.uid)
+    // const [documents, setDocuments] = useState([]);
+    // const [loading, setLoading] = useState(false);
+    // const getDocuments = ( ) =>{
+    //     setLoading(true)
+    //     ref.onSnapshot((querySnapshot) =>{
+    //         const items = [];
+    //         querySnapshot.forEach((doc)=>{
+    //             items.push(doc.data());
+    //         });
+    //         setDocuments(items);
+    //         setLoading(false);
+    //     })
+    // }
+
     return (
 
         <StyledDocuments>
             <Navigation />
         <AllDocuments>
-            {loading == false &&(
-                documents.map((el)=>(
-                    <Link to={`document/${el.id}`}><div>
+            {data !== undefined &&(
+                data.map((el)=>(
+                    <Link to={`document/${el.id}`} key={el.id}><div>
                         <p>{el.id}</p>
                         <p>{el.invoiceNumber}</p>
                     </div>
