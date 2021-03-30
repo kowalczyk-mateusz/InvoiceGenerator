@@ -10,11 +10,7 @@ const ServicesInfo = ({invoiceData, setInvoiceData, services, setServices}) => {
 
     })
 
-    const calculateBruttoPrice = (nettoPrice, id) => {
-        let vat = services[id].vat === 23 ? 1.23 : 1.08;
-        let price = parseFloat(nettoPrice * vat)
-        return price.toFixed(2)
-    }
+   
     const addNewService = () =>{
         setService({singleService: [...service.singleService, '']});
         services.push({serviceName: '',
@@ -24,7 +20,7 @@ const ServicesInfo = ({invoiceData, setInvoiceData, services, setServices}) => {
         vat: 23,})
 
     }
-    
+
     const handleChangeData = (id) => (e) =>{
         const value = e.target.value
         let newArray = [...services];
@@ -48,7 +44,7 @@ const ServicesInfo = ({invoiceData, setInvoiceData, services, setServices}) => {
         <button onClick={addNewService}>AddService</button>
         <StyledServices>
         {service.singleService.map((services, index)=>(
-            <Service id={index} key={index} services={services} invoiceData={invoiceData} setServices={setServices} handleChangeData={handleChangeData} calculateBruttoPrice={calculateBruttoPrice}/>
+            <Service id={index} key={index} services={services} invoiceData={invoiceData} setServices={setServices} handleChangeData={handleChangeData}/>
         ))}
         </StyledServices>
         </StyledServicesInfo>

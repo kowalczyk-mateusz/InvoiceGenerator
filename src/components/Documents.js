@@ -9,45 +9,24 @@ import {useDispatch, useSelector} from 'react-redux'
 
 const Documents = () => {
     const dispatch = useDispatch()
-    const {currentUser} = useAuth()
-    const id = currentUser.uid
+    const [data, setData] = useState([])
     useEffect(()=>{
-        // getDocuments()
-        dispatch(loadInvoices(id))
+        dispatch(loadInvoices())
     }, [])
     const {allInvoices, isLoading} = useSelector((state)=>state.invoices)
-  
-   const [data, setData] =useState([])
-
- 
-   useEffect(()=>{
-    if(isLoading === false){
-        setData(...allInvoices)
-    }
-   }, [isLoading])
     
-    // const ref = app.firestore().collection(currentUser.uid)
-    // const [documents, setDocuments] = useState([]);
-    // const [loading, setLoading] = useState(false);
-    // const getDocuments = ( ) =>{
-    //     setLoading(true)
-    //     ref.onSnapshot((querySnapshot) =>{
-    //         const items = [];
-    //         querySnapshot.forEach((doc)=>{
-    //             items.push(doc.data());
-    //         });
-    //         setDocuments(items);
-    //         setLoading(false);
-    //     })
-    // }
-
+    setTimeout(()=>{
+        setData(allInvoices)
+        console.log(data)
+    }, 1000)
+    
     return (
 
         <StyledDocuments>
             <Navigation />
         <AllDocuments>
-            {data !== undefined &&(
-                data.map((el)=>(
+            {allInvoices !== [] &&(
+                allInvoices.map((el)=>(
                     <Link to={`document/${el.id}`} key={el.id}><div>
                         <p>{el.id}</p>
                         <p>{el.invoiceNumber}</p>

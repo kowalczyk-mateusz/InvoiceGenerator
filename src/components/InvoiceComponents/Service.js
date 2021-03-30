@@ -1,12 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Label, Input, Select, Option, Container} from './CommonStyles'
-import {nettoValue, bruttoValue} from '../../Assets/Calculations'
+
 
 const Service = ({id, services,invoiceData, serServices, handleChangeData}) => {
     
 
-    
+
+    const data = invoiceData.services[id]
+    const Vat = data.Vat === 23 ? 1.23 : 1.08
+    const PriceVat = parseFloat(data.priceBrutto !== '' ? data.priceBrutto - (data.priceBrutto / Vat) : data.priceNetto * Vat - data.priceNetto)
+    const FixedPriceVat = PriceVat.toFixed(2)
+    const PriceBrutto = parseFloat(data.priceBrutto !== '' ? data.priceBrutto : data.priceNetto * Vat)
+    const FixedPriceBrutto = PriceBrutto.toFixed(2)
+    const PriceNetto = parseFloat(data.priceNetto !== '' ? data.priceNetto : data.priceBrutto - (data.priceBrutto - (data.priceBrutto / Vat)))
+    const FixedPriceNetto = PriceNetto.toFixed(2)
+    console.log('pricebrutto ' + FixedPriceBrutto)
+    console.log('vat ' + Vat)
+    console.log('pricenetto ' + FixedPriceNetto)
+    console.log('price Vat ' + FixedPriceVat)
     return (
         <StyledService>
             <Container>
@@ -19,11 +31,11 @@ const Service = ({id, services,invoiceData, serServices, handleChangeData}) => {
             </Container>
             <Container>
             <Label htmlFor='priceNetto'>Cena Netto</Label>
-            <Input name='priceNetto' type='number' onChange={handleChangeData(id)} value={nettoValue(invoiceData.services[0].vat,invoiceData.services[0].priceBrutto,invoiceData.services[0].priceNetto)}/>
+            <Input name='priceNetto' type='number' onChange={handleChangeData(id)} disabled={data.priceBrutto !== ''  ? true : false}/>
             </Container>
             <Container>
             <Label htmlFor='priceBrutto'>Cena Brutto</Label>
-            <Input name='priceBrutto' type='number' onChange={handleChangeData(id)} value={bruttoValue(invoiceData.services[0].vat,invoiceData.services[0].priceNetto, invoiceData.services[0].priceBrutto)}/>
+            <Input name='priceBrutto' type='number' onChange={handleChangeData(id)} disabled={data.priceNetto !== '' ? true : false}/>
             </Container>
             <Container>
             <Label htmlFor='vat'>Stawka Vat</Label>

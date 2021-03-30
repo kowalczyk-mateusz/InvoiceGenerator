@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Label, Input, Select, Option, Container} from '../InvoiceComponents/CommonStyles'
-import {nettoValue, bruttoValue} from '../../Assets/Calculations'
 const Service = ({id, services,invoiceData, serServices, handleChangeData}) => {
     return (
         <StyledService>
@@ -15,11 +14,11 @@ const Service = ({id, services,invoiceData, serServices, handleChangeData}) => {
         </Container>
         <Container>
         <Label htmlFor='priceNetto'>Cena Netto</Label>
-        <Input name='priceNetto' type='number' onChange={handleChangeData(id)} value={nettoValue(invoiceData.services[0].vat,invoiceData.services[0].priceBrutto,invoiceData.services[0].priceNetto)}/>
+        <Input name='priceNetto' type='number' onChange={handleChangeData(id)}/>
         </Container>
         <Container>
         <Label htmlFor='priceBrutto'>Cena Brutto</Label>
-        <Input name='priceBrutto' type='number' onChange={handleChangeData(id)} value={bruttoValue(invoiceData.services[0].vat,invoiceData.services[0].priceNetto, invoiceData.services[0].priceBrutto)}/>
+        <Input name='priceBrutto' type='number' onChange={handleChangeData(id)}/>
         </Container>
         <Container>
         <Label htmlFor='vat'>Stawka Vat</Label>

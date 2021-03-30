@@ -1,21 +1,18 @@
 
 import app from '../firebase'
 
-//ACTIONS
-export const loadInvoices = (id) => async (dispatch) =>{
+export const loadInvoices = () => async (dispatch, getState) =>{
     dispatch({
         type: 'LOAD_INVOICES'
     })
-    const ref = app.firestore().collection(id)
+    const userId = getState().firebase.auth.uid;
+    const ref = app.firestore().collection(userId)
     const data = []
      await ref.onSnapshot((querySnapshot)=>{
-        const items = [];
         querySnapshot.forEach((doc)=>{
-            items.push(doc.data());
+            data.push(doc.data());
         })
-        data.push(items)
     })
-    
     
     dispatch({
         type: "FETCH_ALL_INVOICES",
@@ -24,3 +21,4 @@ export const loadInvoices = (id) => async (dispatch) =>{
         }
     })
 }
+

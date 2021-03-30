@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Signup from './components/FirebaseLoginComponents/Signup'
 import styled from 'styled-components';
 import {AuthProvider} from './context/AuthContext'
@@ -10,8 +10,10 @@ import ForgotPassword from './components/FirebaseLoginComponents/ForgotPassword'
 import UpdateProfile from './components/FirebaseLoginComponents/UpdateProfile'
 import Documents from './components/Documents'
 import DocumentId from './components/DocumentId'
+
+
 function App() {
-  
+
   
   return (
     <StyledApp>
