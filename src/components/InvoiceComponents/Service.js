@@ -8,7 +8,7 @@ const Service = ({id, services,invoiceData, serServices, handleChangeData}) => {
 
 
     const data = invoiceData.services[id]
-    const Vat = data.Vat === 23 ? 1.23 : 1.08
+    const Vat = data.vat === 23 ? 1.23 : 1.08
     const PriceVat = parseFloat(data.priceBrutto !== '' ? data.priceBrutto - (data.priceBrutto / Vat) : data.priceNetto * Vat - data.priceNetto)
     const FixedPriceVat = PriceVat.toFixed(2)
     const PriceBrutto = parseFloat(data.priceBrutto !== '' ? data.priceBrutto : data.priceNetto * Vat)
@@ -31,11 +31,11 @@ const Service = ({id, services,invoiceData, serServices, handleChangeData}) => {
             </Container>
             <Container>
             <Label htmlFor='priceNetto'>Cena Netto</Label>
-            <Input name='priceNetto' type='number' onChange={handleChangeData(id)} disabled={data.priceBrutto !== ''  ? true : false}/>
+            <Input name='priceNetto' type='number' onChange={handleChangeData(id)} disabled={data.priceBrutto !== ''  ? true : false} placeholder={data.priceBrutto !== '' ? FixedPriceNetto : ''}/>
             </Container>
             <Container>
             <Label htmlFor='priceBrutto'>Cena Brutto</Label>
-            <Input name='priceBrutto' type='number' onChange={handleChangeData(id)} disabled={data.priceNetto !== '' ? true : false}/>
+            <Input name='priceBrutto' type='number' onChange={handleChangeData(id)} disabled={data.priceNetto !== '' ? true : false} placeholder={data.priceNetto !== '' ? FixedPriceBrutto : ''}/>
             </Container>
             <Container>
             <Label htmlFor='vat'>Stawka Vat</Label>
