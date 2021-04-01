@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {Label, Input, Select, Option, Container} from './CommonStyles'
 
 
-const Service = ({id, services,invoiceData, serServices, handleChangeData}) => {
+const Service = ({id, services,invoiceData, serServices, handleChangeData, setInvoiceData}) => {
     
 
 
@@ -15,12 +15,21 @@ const Service = ({id, services,invoiceData, serServices, handleChangeData}) => {
     const FixedPriceBrutto = PriceBrutto.toFixed(2)
     const PriceNetto = parseFloat(data.priceNetto !== '' ? data.priceNetto : data.priceBrutto - (data.priceBrutto - (data.priceBrutto / Vat)))
     const FixedPriceNetto = PriceNetto.toFixed(2)
-    console.log('pricebrutto ' + FixedPriceBrutto)
-    console.log('vat ' + Vat)
-    console.log('pricenetto ' + FixedPriceNetto)
-    console.log('price Vat ' + FixedPriceVat)
+
+
+    const delteServices = (e)=>{
+        const newData = {...invoiceData}
+        if(newData.services.length>1){
+            newData.services.splice(id, 1)
+            setInvoiceData({...newData})
+        }
+        
+
+    }
+        
     return (
         <StyledService>
+             <button onClick={delteServices}>Usuń</button>
             <Container>
             <Label htmlFor='serviceName'>Nazwa usługi</Label>
             <Input name='serviceName' type='text' onChange={handleChangeData(id)}/>

@@ -41,20 +41,33 @@ const ServicesInfo = ({invoiceData, setInvoiceData, services, setServices}) => {
     }, [services])
     return (
         <StyledServicesInfo>
-        <button onClick={addNewService}>AddService</button>
+        
         <StyledServices>
-        {service.singleService.map((services, index)=>(
-            <Service id={index} key={index} services={services} invoiceData={invoiceData} setServices={setServices} handleChangeData={handleChangeData}/>
+        {invoiceData.services.map((services, index)=>(
+            <Service id={index} key={index} services={services} invoiceData={invoiceData} setInvoiceData={setInvoiceData} setServices={setServices} handleChangeData={handleChangeData}/>
         ))}
         </StyledServices>
+        <button onClick={addNewService}>AddService</button>
+        <Overall>
+            
+            </Overall>
         </StyledServicesInfo>
     );
 }
 const StyledServicesInfo = styled.div`
 display: flex;
 justify-content: center;
+flex-direction: column;
+button {
+    align-self: center;
+    width: 5rem;
+    height: 2rem;
+}
 `
 const StyledServices = styled.div`
+
+`
+const Overall = styled.div`
 
 `
 export default ServicesInfo;
