@@ -11,7 +11,7 @@ import { PDFDownloadLink} from '@react-pdf/renderer';
 import MyDocument from './Print PDf/PrintPdf'
 import {useAuth} from '../context/AuthContext'
 const AddInvoice = () => {
-    
+
     const  {currentUser} = useAuth()
     const ref = app.firestore().collection(currentUser.uid)
 
@@ -22,6 +22,12 @@ const AddInvoice = () => {
         priceBrutto: '',
         vat: 23,
     }])
+    const [overall, setOverall] = useState({
+        sumNetto : 0.00,
+        sumBrutto : 0.00,
+        sumVat: 0.00,
+        sum: 0.00,
+    })
     const [invoiceData, setInvoiceData] = useState({
         invoiceNumber: '',
         releaseDate: '',
@@ -43,9 +49,9 @@ const AddInvoice = () => {
         accountNumber: '',
         splitPayment: true,
         comments: '',
+        overall: overall,
         id: uuidv4(),
     })
-
 
     const invoiceHandler = (e) =>{
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
@@ -64,28 +70,25 @@ const AddInvoice = () => {
             .set(data)
       }
     
-      const [printData, setPrintData] = useState({})
       const [loading, setLoading] = useState(true)
       const saveInvoice = () =>{
           setLoading(true)
-          setPrintData({...invoiceData})
-          setTimeout(()=>{
-              setLoading(false)
-          }, 2000)
+        setLoading(false)
 
       }
 
     return (
         <InvoiceContainer>
+            
             <InvoiceInfo invoiceHandler={invoiceHandler} invoiceData={invoiceData}/>
             <SellerInfo invoiceHandler={invoiceHandler} invoiceData={invoiceData}/>
             <BuyerInfo invoiceHandler={invoiceHandler} invoiceData={invoiceData}/>
-            <ServicesInfo invoiceData={invoiceData} setInvoiceData={setInvoiceData} services={services} setServices={setServices}/>
+            <ServicesInfo invoiceData={invoiceData} setInvoiceData={setInvoiceData} services={services} setServices={setServices} overall={overall} setOverall={setOverall}/>
             <PaymentInfo invoiceHandler={invoiceHandler} invoiceData={invoiceData}/>
             <button onClick={addNewInvoice}>DODAJ Fakture</button>
             <button onClick={saveInvoice}>Zapisz Dane i pobierz</button>
             {!loading && (
-            <PDFDownloadLink document={<MyDocument printData={printData}/>} fileName='Invoice.pdf'>
+            <PDFDownloadLink document={<MyDocument printData={invoiceData}/>} fileName='Invoice.pdf'>
             {({blob, url, error})=> (loading ? 'Loading document...' : 'Download now!')}
              </PDFDownloadLink>)}
    

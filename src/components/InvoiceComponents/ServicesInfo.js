@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import Service from './Service'
-const ServicesInfo = ({invoiceData, setInvoiceData, services, setServices}) => {
+import {Label, Input} from './CommonStyles'
+const ServicesInfo = ({invoiceData, setInvoiceData, services, setServices, overall, setOverall}) => {
 
 
     
@@ -9,6 +10,8 @@ const ServicesInfo = ({invoiceData, setInvoiceData, services, setServices}) => {
         singleService: ['']
 
     })
+
+
 
    
     const addNewService = () =>{
@@ -44,12 +47,30 @@ const ServicesInfo = ({invoiceData, setInvoiceData, services, setServices}) => {
         
         <StyledServices>
         {invoiceData.services.map((services, index)=>(
-            <Service id={index} key={index} services={services} invoiceData={invoiceData} setInvoiceData={setInvoiceData} setServices={setServices} handleChangeData={handleChangeData}/>
+            <Service id={index} key={index} services={services} invoiceData={invoiceData} setInvoiceData={setInvoiceData} setServices={setServices} handleChangeData={handleChangeData} overall={overall} setOverall={setOverall}/>
         ))}
         </StyledServices>
         <button onClick={addNewService}>AddService</button>
-        <Overall>
-            
+            <Overall>
+                Razem
+                <div>
+                    <Label>Wartość Netto</Label>
+                    <Input disabled value={overall.sumNetto}/>
+                </div>
+                <div>
+                    <Label>Kwota Vat</Label>
+                    <Input disabled value={overall.sumVat}/>
+                </div>
+                <div>
+                    <Label>Wartosc Brutto</Label>
+                    <Input disabled value={overall.sumBrutto}/>
+                </div>
+                <div>
+                    <Label>Razem</Label>
+                    <Input disabled value={overall.sum}/>
+                </div>
+            <OverallContainer></OverallContainer>
+            <Sum></Sum>
             </Overall>
         </StyledServicesInfo>
     );
@@ -68,6 +89,11 @@ const StyledServices = styled.div`
 
 `
 const Overall = styled.div`
+`
+const OverallContainer = styled.div`
+
+`
+const Sum = styled.div`
 
 `
 export default ServicesInfo;

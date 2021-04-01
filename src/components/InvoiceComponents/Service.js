@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {Label, Input, Select, Option, Container} from './CommonStyles'
 
 
-const Service = ({id, services,invoiceData, serServices, handleChangeData, setInvoiceData}) => {
+const Service = ({id, services,invoiceData, serServices, handleChangeData, setInvoiceData, overall, setOverall}) => {
     
 
 
@@ -16,7 +16,6 @@ const Service = ({id, services,invoiceData, serServices, handleChangeData, setIn
     const PriceNetto = parseFloat(data.priceNetto !== '' ? data.priceNetto : data.priceBrutto - (data.priceBrutto - (data.priceBrutto / Vat)))
     const FixedPriceNetto = PriceNetto.toFixed(2)
 
-
     const delteServices = (e)=>{
         const newData = {...invoiceData}
         if(newData.services.length>1){
@@ -26,29 +25,31 @@ const Service = ({id, services,invoiceData, serServices, handleChangeData, setIn
         
 
     }
+
+ 
         
     return (
         <StyledService>
              <button onClick={delteServices}>Usuń</button>
             <Container>
             <Label htmlFor='serviceName'>Nazwa usługi</Label>
-            <Input name='serviceName' type='text' onChange={handleChangeData(id)}/>
+            <Input name='serviceName' type='text' onBlur={handleChangeData(id)}/>
             </Container>
             <Container>
             <Label htmlFor='qty'>Ilość</Label>
-            <Input name='qty' type='number' onChange={handleChangeData(id)}/>
+            <Input name='qty' type='number' onBlur={handleChangeData(id)}/>
             </Container>
             <Container>
             <Label htmlFor='priceNetto'>Cena Netto</Label>
-            <Input name='priceNetto' type='number' onChange={handleChangeData(id)} disabled={data.priceBrutto !== ''  ? true : false} placeholder={data.priceBrutto !== '' ? FixedPriceNetto : ''}/>
+            <Input name='priceNetto' type='number'  onBlur={handleChangeData(id)} disabled={data.priceBrutto !== ''  ? true : false} placeholder={data.priceBrutto !== '' ? FixedPriceNetto : ''}/>
             </Container>
             <Container>
             <Label htmlFor='priceBrutto'>Cena Brutto</Label>
-            <Input name='priceBrutto' type='number' onChange={handleChangeData(id)} disabled={data.priceNetto !== '' ? true : false} placeholder={data.priceNetto !== '' ? FixedPriceBrutto : ''}/>
+            <Input name='priceBrutto' type='number' onBlur={handleChangeData(id)} disabled={data.priceNetto !== '' ? true : false} placeholder={data.priceNetto !== '' ? FixedPriceBrutto : ''}/>
             </Container>
             <Container>
             <Label htmlFor='vat'>Stawka Vat</Label>
-            <Select name='vat' onChange={handleChangeData(id)}>
+            <Select name='vat' onBlur={handleChangeData(id)}>
                 <Option value={23}>23%</Option>
                 <Option value={8}>8%</Option>
             </Select>

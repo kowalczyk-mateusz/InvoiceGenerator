@@ -17,7 +17,6 @@ const Documents = () => {
     
     setTimeout(()=>{
         setData(allInvoices)
-        console.log(data)
     }, 1000)
     
     return (
