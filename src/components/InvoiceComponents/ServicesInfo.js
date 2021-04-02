@@ -17,7 +17,7 @@ const ServicesInfo = ({invoiceData, setInvoiceData, services, setServices, overa
     const addNewService = () =>{
         setService({singleService: [...service.singleService, '']});
         services.push({serviceName: '',
-        qty: '',
+        qty: '1',
         priceNetto: '',
         priceBrutto: '',
         vat: 23,})
@@ -55,19 +55,19 @@ const ServicesInfo = ({invoiceData, setInvoiceData, services, setServices, overa
                 Razem
                 <div>
                     <Label>Wartość Netto</Label>
-                    <Input disabled value={overall.sumNetto}/>
+                    <Input disabled value={isNaN(overall.sumNetto) ? 0.00 : overall.sumNetto}/>
                 </div>
                 <div>
                     <Label>Kwota Vat</Label>
-                    <Input disabled value={overall.sumVat}/>
+                    <Input disabled value={isNaN(overall.sumVat) ? 0.00 : overall.sumVat}/>
                 </div>
                 <div>
                     <Label>Wartosc Brutto</Label>
-                    <Input disabled value={overall.sumBrutto}/>
+                    <Input disabled value={isNaN(overall.sumBrutto) ? 0.00 : overall.sumBrutto}/>
                 </div>
                 <div>
                     <Label>Razem</Label>
-                    <Input disabled value={overall.sum}/>
+                    <Input disabled value={isNaN(overall.sum) ? 0.00 : overall.sum}/>
                 </div>
             <OverallContainer></OverallContainer>
             <Sum></Sum>

@@ -26,6 +26,7 @@ const Service = ({id, services,invoiceData, serServices, handleChangeData, setIn
 
     }
 
+    console.log(invoiceData)
  
         
     return (
@@ -37,15 +38,15 @@ const Service = ({id, services,invoiceData, serServices, handleChangeData, setIn
             </Container>
             <Container>
             <Label htmlFor='qty'>Ilość</Label>
-            <Input name='qty' type='number' onBlur={handleChangeData(id)}/>
+            <Input name='qty' type='number' onBlur={handleChangeData(id)} defaultValue='1'/>
             </Container>
             <Container>
             <Label htmlFor='priceNetto'>Cena Netto</Label>
-            <Input name='priceNetto' type='number'  onBlur={handleChangeData(id)} disabled={data.priceBrutto !== ''  ? true : false} placeholder={data.priceBrutto !== '' ? FixedPriceNetto : ''}/>
+            <Input name='priceNetto' type='number' defaultValue={data.priceBrutto !== '' ? FixedPriceNetto : ''} onBlur={handleChangeData(id)} disabled={data.priceBrutto !== ''  ? true : false} placeholder={data.priceBrutto !== '' ? FixedPriceNetto : ''}/>
             </Container>
             <Container>
             <Label htmlFor='priceBrutto'>Cena Brutto</Label>
-            <Input name='priceBrutto' type='number' onBlur={handleChangeData(id)} disabled={data.priceNetto !== '' ? true : false} placeholder={data.priceNetto !== '' ? FixedPriceBrutto : ''}/>
+            <Input name='priceBrutto' type='number'defaultValue={data.priceNetto !== '' ? FixedPriceBrutto : ''} onBlur={handleChangeData(id)} disabled={data.priceNetto !== '' ? true : false} placeholder={data.priceNetto !== '' ? FixedPriceBrutto : ''}/>
             </Container>
             <Container>
             <Label htmlFor='vat'>Stawka Vat</Label>

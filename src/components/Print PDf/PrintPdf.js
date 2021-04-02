@@ -396,19 +396,19 @@ return(
             <View style={styles.overallContainer}>
                 <View style={styles.emptySpace}><Text style={styles.emptyText}>W tym</Text></View>
                 <View style={styles.overallContent}>
-                <View style={styles.serviceValueNetto}><Text style={styles.overallText}>3425,93</Text></View>
-                <View style={styles.serviceVat}><Text style={styles.overallText}>8%</Text></View>
-                <View style={styles.serviceVatPrice}><Text style={styles.overallText}>274,07</Text></View>
-                <View style={styles.serviceValueBrutto}><Text style={styles.overallText}>3 700,00</Text></View>
+                <View style={styles.serviceValueNetto}><Text style={styles.overallText}>{printData.overall.sumNetto}</Text></View>
+                <View style={styles.serviceVat}><Text style={styles.overallText}></Text></View>
+                <View style={styles.serviceVatPrice}><Text style={styles.overallText}>{printData.overall.sumVat}</Text></View>
+                <View style={styles.serviceValueBrutto}><Text style={styles.overallText}>{printData.overall.sum}</Text></View>
                 </View>
             </View>
             <View style={styles.overallContainerLast}>
                 <View style={styles.emptySpace}><Text style={styles.emptyText}>Razem</Text></View>
                 <View style={styles.overallContent}>
-                <View style={styles.serviceValueNetto}><Text style={styles.overallText}>3425,93</Text></View>
+                <View style={styles.serviceValueNetto}><Text style={styles.overallText}>{printData.overall.sumNetto}</Text></View>
                 <View style={styles.serviceVat}></View>
-                <View style={styles.serviceVatPrice}><Text style={styles.overallText}>274,07</Text></View>
-                <View style={styles.serviceValueBrutto}><Text style={styles.overallText}>100 700,00</Text></View>
+                <View style={styles.serviceVatPrice}><Text style={styles.overallText}>{printData.overall.sumVat}</Text></View>
+                <View style={styles.serviceValueBrutto}><Text style={styles.overallText}>{printData.overall.sum}</Text></View>
                 </View>
             </View>
         </View>
@@ -430,7 +430,7 @@ return(
            <View style={styles.paymentOverall}>
                <View  style={styles.paymentRow}>
                <Text style={styles.paymentTextFirst}>Do Zaplaty</Text>
-               <Text style={styles.paymentText}>3 700,00 PLN</Text>
+               <Text style={styles.paymentText}>{printData.overall.sum} PLN</Text>
                </View>
                <View  style={styles.paymentRow}>
                <Text style={styles.paymentTextFirst}>Slownie</Text>

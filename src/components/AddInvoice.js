@@ -17,7 +17,7 @@ const AddInvoice = () => {
 
     const [services, setServices] = useState([{
         serviceName: '',
-        qty: '',
+        qty: '1',
         priceNetto: '',
         priceBrutto: '',
         vat: 23,
@@ -76,6 +76,43 @@ const AddInvoice = () => {
         setLoading(false)
 
       }
+
+      useEffect(()=>{
+          let sumNetto = 0
+          let sumBrutto = 0
+          let sum = 0
+          let sumVat = 0
+          let vat = 1.23
+            invoiceData.services.forEach((el)=>{
+                if(el.priceNetto !== ''){
+                sumNetto += parseInt(el.priceNetto) * parseInt(el.qty) // Netto value
+                let numberVat = parseInt(el.vat)
+                numberVat === 23 ? vat=1.23 : vat=1.08
+                let bruttoValue = parseInt(el.priceNetto) * vat
+                sumBrutto += bruttoValue * parseInt(el.qty) // Brutto value
+                sum += bruttoValue * parseInt(el.qty) // Sum Value
+                sumVat += (bruttoValue - parseInt(el.priceNetto)) * parseInt(el.qty) // Vat value
+            } else {
+                sumBrutto += parseInt(el.priceBrutto) * parseInt(el.qty) // Brutto Value
+                let numberBrutto = parseInt(el.priceBrutto)
+                let numberVat = parseInt(el.vat)
+                numberVat === 23 ? vat=1.23 : vat=1.08
+                let nettoValue = numberBrutto - (numberBrutto - (numberBrutto / vat))
+                sumNetto += nettoValue * parseInt(el.qty) // Netto Value
+                sum += numberBrutto * parseInt(el.qty) // Sum Value
+                sumVat += (numberBrutto - nettoValue) * parseInt(el.qty)
+                
+            }
+            setOverall({...overall, 
+                sumNetto: sumNetto.toFixed(2), 
+                sumBrutto: sumBrutto.toFixed(2),
+                sumVat: sumVat.toFixed(2),
+                sum: sum.toFixed(2)
+            })
+            })
+        setInvoiceData({...invoiceData, overall: overall})
+        console.log(overall)
+      },[invoiceData.services, overall.sumNetto, overall.sumBrutto])
 
     return (
         <InvoiceContainer>
