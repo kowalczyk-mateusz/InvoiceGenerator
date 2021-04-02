@@ -21,6 +21,7 @@ const AddInvoice = () => {
         priceNetto: '',
         priceBrutto: '',
         vat: 23,
+        vatValue: '',
     }])
     const [overall, setOverall] = useState({
         sumNetto : 0.00,
@@ -111,7 +112,6 @@ const AddInvoice = () => {
             })
             })
         setInvoiceData({...invoiceData, overall: overall})
-        console.log(overall)
       },[invoiceData.services, overall.sumNetto, overall.sumBrutto])
 
     return (

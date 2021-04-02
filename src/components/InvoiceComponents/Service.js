@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import {Label, Input, Select, Option, Container} from './CommonStyles'
 
@@ -9,48 +9,46 @@ const Service = ({id, services,invoiceData, serServices, handleChangeData, setIn
 
     const data = invoiceData.services[id]
     const Vat = data.vat === 23 ? 1.23 : 1.08
-    const PriceVat = parseFloat(data.priceBrutto !== '' ? data.priceBrutto - (data.priceBrutto / Vat) : data.priceNetto * Vat - data.priceNetto)
-    const FixedPriceVat = PriceVat.toFixed(2)
-    const PriceBrutto = parseFloat(data.priceBrutto !== '' ? data.priceBrutto : data.priceNetto * Vat)
+    const PriceBrutto = parseInt(data.priceBrutto !== '' ? data.priceBrutto : data.priceNetto * Vat)
     const FixedPriceBrutto = PriceBrutto.toFixed(2)
-    const PriceNetto = parseFloat(data.priceNetto !== '' ? data.priceNetto : data.priceBrutto - (data.priceBrutto - (data.priceBrutto / Vat)))
+    const PriceNetto = parseInt(data.priceNetto !== '' ? data.priceNetto : data.priceBrutto - (data.priceBrutto - (data.priceBrutto / Vat)))
     const FixedPriceNetto = PriceNetto.toFixed(2)
-
-    const delteServices = (e)=>{
+    const PriceVat = parseInt(FixedPriceBrutto - FixedPriceNetto)
+    const FixedPriceVat = PriceVat.toFixed(2)
+    const delteServices = ()=>{
         const newData = {...invoiceData}
         if(newData.services.length>1){
             newData.services.splice(id, 1)
             setInvoiceData({...newData})
-        }
-        
+        }}
 
-    }
-
-    console.log(invoiceData)
- 
         
     return (
-        <StyledService>
+        <StyledService onBlur={handleChangeData(id)}>
              <button onClick={delteServices}>Usuń</button>
             <Container>
             <Label htmlFor='serviceName'>Nazwa usługi</Label>
-            <Input name='serviceName' type='text' onBlur={handleChangeData(id)}/>
+            <Input name='serviceName' type='text'/>
             </Container>
             <Container>
             <Label htmlFor='qty'>Ilość</Label>
-            <Input name='qty' type='number' onBlur={handleChangeData(id)} defaultValue='1'/>
+            <Input name='qty' type='number' defaultValue='1'/>
             </Container>
             <Container>
             <Label htmlFor='priceNetto'>Cena Netto</Label>
-            <Input name='priceNetto' type='number' defaultValue={data.priceBrutto !== '' ? FixedPriceNetto : ''} onBlur={handleChangeData(id)} disabled={data.priceBrutto !== ''  ? true : false} placeholder={data.priceBrutto !== '' ? FixedPriceNetto : ''}/>
+            <Input name='priceNetto' type='number' defaultValue={data.priceBrutto !== '' ? FixedPriceNetto : ''}  disabled={data.priceBrutto !== ''  ? true : false}/>
+            </Container>
+            <Container>
+            <Label htmlFor='vatValue'>Wartość Vat</Label>
+            <Input name='vatValue' type='number' value={FixedPriceVat}  disabled />
             </Container>
             <Container>
             <Label htmlFor='priceBrutto'>Cena Brutto</Label>
-            <Input name='priceBrutto' type='number'defaultValue={data.priceNetto !== '' ? FixedPriceBrutto : ''} onBlur={handleChangeData(id)} disabled={data.priceNetto !== '' ? true : false} placeholder={data.priceNetto !== '' ? FixedPriceBrutto : ''}/>
+            <Input name='priceBrutto' type='number'defaultValue={data.priceNetto !== '' ? FixedPriceBrutto : ''}  disabled={data.priceNetto !== '' ? true : false}/>
             </Container>
             <Container>
             <Label htmlFor='vat'>Stawka Vat</Label>
-            <Select name='vat' onBlur={handleChangeData(id)}>
+            <Select name='vat'>
                 <Option value={23}>23%</Option>
                 <Option value={8}>8%</Option>
             </Select>
@@ -60,7 +58,7 @@ const Service = ({id, services,invoiceData, serServices, handleChangeData, setIn
     );
 }
 
-const StyledService = styled.div`
+const StyledService = styled.form`
 display: flex;
 justify-content: center;
 `

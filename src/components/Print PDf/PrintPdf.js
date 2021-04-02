@@ -356,39 +356,19 @@ return(
             <View style={styles.labelsvalueBrutto}><Text style={styles.labelText}>Wartosc Brutto</Text></View>
         </View>
         <View style={styles.serviceContainer}>
-            <View style={styles.singleService}>
-                <View style={styles.serviceLp}><Text style={styles.serviceText}>{printData.services[0].qty}</Text></View>
-                <View style={styles.serviceServiceName}><Text style={styles.serviceText}>{printData.services[0].serviceName}</Text></View>
-                <View style={styles.serviceJm}><Text style={styles.serviceText}>szt.</Text></View>
-                <View style={styles.serviceQty}><Text style={styles.serviceText}>1</Text></View>
-                <View style={styles.servicePriceNetto}><Text style={styles.serviceText}>{printData.services[0].priceNetto}</Text></View>
-                <View style={styles.serviceValueNetto}><Text style={styles.serviceText}>{printData.services[0].priceBrutto}</Text></View>
-                <View style={styles.serviceVat}><Text style={styles.serviceText}>{printData.services[0].vat}</Text></View>
-                <View style={styles.serviceVatPrice}><Text style={styles.serviceText}>274,07</Text></View>
-                <View style={styles.serviceValueBrutto}><Text style={styles.serviceText}>3 700,00</Text></View>
-            </View>
-            <View style={styles.singleService}>
-                <View style={styles.serviceLp}><Text style={styles.serviceText}>1</Text></View>
-                <View style={styles.serviceServiceName}><Text style={styles.serviceText}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt quo id iste.</Text></View>
-                <View style={styles.serviceJm}><Text style={styles.serviceText}>szt.</Text></View>
-                <View style={styles.serviceQty}><Text style={styles.serviceText}>1</Text></View>
-                <View style={styles.servicePriceNetto}><Text style={styles.serviceText}>3 425,93</Text></View>
-                <View style={styles.serviceValueNetto}><Text style={styles.serviceText}>3425,93</Text></View>
-                <View style={styles.serviceVat}><Text style={styles.serviceText}>8%</Text></View>
-                <View style={styles.serviceVatPrice}><Text style={styles.serviceText}>274,07</Text></View>
-                <View style={styles.serviceValueBrutto}><Text style={styles.serviceText}>3 700,00</Text></View>
-            </View>
-            <View style={styles.singleService}>
-                <View style={styles.serviceLp}><Text style={styles.serviceText}>1</Text></View>
-                <View style={styles.serviceServiceName}><Text style={styles.serviceText}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt quo id iste.</Text></View>
-                <View style={styles.serviceJm}><Text style={styles.serviceText}>szt.</Text></View>
-                <View style={styles.serviceQty}><Text style={styles.serviceText}>1</Text></View>
-                <View style={styles.servicePriceNetto}><Text style={styles.serviceText}>3 425,93</Text></View>
-                <View style={styles.serviceValueNetto}><Text style={styles.serviceText}>3425,93</Text></View>
-                <View style={styles.serviceVat}><Text style={styles.serviceText}>8%</Text></View>
-                <View style={styles.serviceVatPrice}><Text style={styles.serviceText}>274,07</Text></View>
-                <View style={styles.serviceValueBrutto}><Text style={styles.serviceText}>3 700,00</Text></View>
-            </View>
+            {printData.services.map((el, index)=>(
+                            <View style={styles.singleService}>
+                            <View style={styles.serviceLp}><Text style={styles.serviceText}>{parseInt(index) + 1}</Text></View>
+                            <View style={styles.serviceServiceName}><Text style={styles.serviceText}>{el.serviceName}</Text></View>
+                            <View style={styles.serviceJm}><Text style={styles.serviceText}>szt.</Text></View>
+                            <View style={styles.serviceQty}><Text style={styles.serviceText}>{el.qty}</Text></View>
+                            <View style={styles.servicePriceNetto}><Text style={styles.serviceText}>{el.priceNetto}</Text></View>
+                            <View style={styles.serviceValueNetto}><Text style={styles.serviceText}>{el.priceBrutto}</Text></View>
+                            <View style={styles.serviceVat}><Text style={styles.serviceText}>{el.vat}%</Text></View>
+                            <View style={styles.serviceVatPrice}><Text style={styles.serviceText}>274,07</Text></View>
+                            <View style={styles.serviceValueBrutto}><Text style={styles.serviceText}>{el.priceBrutto}</Text></View>
+                        </View>
+            ))}
         </View>
 
        </View>

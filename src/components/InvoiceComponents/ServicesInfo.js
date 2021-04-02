@@ -20,7 +20,9 @@ const ServicesInfo = ({invoiceData, setInvoiceData, services, setServices, overa
         qty: '1',
         priceNetto: '',
         priceBrutto: '',
-        vat: 23,})
+        vat: 23,
+        vatValue: ''
+    })
 
     }
 
