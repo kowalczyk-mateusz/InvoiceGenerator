@@ -22,7 +22,6 @@ const Service = ({id, services,invoiceData, serServices, handleChangeData, setIn
             setInvoiceData({...newData})
         }}
 
-        
     return (
         <StyledService onBlur={handleChangeData(id)}>
              <button onClick={delteServices}>Usuń</button>
@@ -49,8 +48,8 @@ const Service = ({id, services,invoiceData, serServices, handleChangeData, setIn
             <Container>
             <Label htmlFor='vat'>Stawka Vat</Label>
             <Select name='vat'>
-                <Option value={23}>23%</Option>
-                <Option value={8}>8%</Option>
+                <Option defaultValue={23}>23%</Option>
+                <Option defaultValue={8}>8%</Option>
             </Select>
             </Container>
             

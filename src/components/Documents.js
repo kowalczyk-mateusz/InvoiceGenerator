@@ -10,6 +10,7 @@ import {useDispatch, useSelector} from 'react-redux'
 const Documents = () => {
     const dispatch = useDispatch()
     const [data, setData] = useState([])
+    const {currentUser} = useAuth()
     useEffect(()=>{
         dispatch(loadInvoices())
     }, [])
@@ -18,7 +19,13 @@ const Documents = () => {
     setTimeout(()=>{
         setData(allInvoices)
     }, 1000)
-    
+    const delteInvoice = (id) =>{
+        const userId = currentUser.uid
+        const ref = app.firestore().collection(userId)
+        ref.doc(id)
+        .delete()
+
+    }
     return (
 
         <StyledDocuments>
@@ -26,11 +33,16 @@ const Documents = () => {
         <AllDocuments>
             {allInvoices !== [] &&(
                 allInvoices.map((el)=>(
-                    <Link to={`document/${el.id}`} key={el.id}><div>
+                    <>
+                    <Link to={`document/${el.id}`} key={el.id}>
+                        <div>
                         <p>{el.id}</p>
                         <p>{el.invoiceNumber}</p>
                     </div>
                     </Link>
+                    <button onClick={()=>{ delteInvoice(el.id) }}>Delete Invoice</button>
+
+                    </>
                 ))
             )}
         </AllDocuments>
