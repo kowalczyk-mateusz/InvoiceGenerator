@@ -22,6 +22,7 @@ const EditData = ({singleData, setSingleData}) => {
                 [e.target.name]: value,
             });
     }
+    console.log(singleData)
     return (
         <InvoiceContainer>
             <InvoiceInfo invoiceHandler={invoiceHandler} invoiceData={singleData}/>

@@ -8,23 +8,23 @@ const SellerInfo = ({invoiceHandler, invoiceData}) => {
             Sprzedawca: 
             <Container>
             <Label htmlFor='sellerName'>Nazwa</Label>
-            <Input name='sellerName' type='text' onChange={invoiceHandler} value={invoiceData.sellerName}/>
+            <Input name='sellerName' type='text' onBlur={invoiceHandler} defaultValue={invoiceData.sellerName}/>
             </Container>
             <Container>
             <Label htmlFor='sellerNip'>Nip</Label>
-            <Input name='sellerNip' type='text' onChange={invoiceHandler} value={invoiceData.sellerNip}/>
+            <Input name='sellerNip' type='text' onBlur={invoiceHandler} defaultValue={invoiceData.sellerNip}/>
             </Container>
             <Container>
             <Label htmlFor='sellerStreet'>Ulica</Label>
-            <Input name='sellerStreet' type='text' onChange={invoiceHandler} value={invoiceData.sellerStreet}/>
+            <Input name='sellerStreet' type='text' onBlur={invoiceHandler} defaultValue={invoiceData.sellerStreet}/>
             </Container>
             <Container>
             <Label htmlFor='sellerCity'>Miasto</Label>
-            <Input name='sellerCity' type='text' onChange={invoiceHandler} value={invoiceData.sellerCity}/>
+            <Input name='sellerCity' type='text' onBlur={invoiceHandler} defaultValue={invoiceData.sellerCity}/>
             </Container>
             <Container>
             <Label htmlFor='sellerCode'>Kod Pocztowy</Label>
-            <Input name='sellerCode' type='text' onChange={invoiceHandler} value={invoiceData.sellerCode}/>
+            <Input name='sellerCode' type='text' onBlur={invoiceHandler} defaultValue={invoiceData.sellerCode}/>
             </Container>
         </SellerInfoContainer>
     );
