@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import styled from 'styled-components';
+
 import {useParams} from 'react-router-dom'
 import {useAuth} from '../context/AuthContext'
 import app from '../firebase'
@@ -25,7 +25,7 @@ const DocumentId = () => {
         }
         const filterData = ( )=>{
                 data.map((el)=>{
-                    if(el.id == id){
+                    if(el.id === id){
                         setSingleData(el)
                     }
                 })

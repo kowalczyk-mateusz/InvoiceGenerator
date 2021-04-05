@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Signup from './components/FirebaseLoginComponents/Signup'
 import styled from 'styled-components';
 import {AuthProvider} from './context/AuthContext'

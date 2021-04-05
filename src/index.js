@@ -5,8 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import {GlobalStyles} from './Assets/GlobalStyles'
 import store from './store/store'
 import {Provider} from 'react-redux'
-import {ReactReduxFirebaseProvider, getFirebase} from 'react-redux-firebase'
-import {createFirestoreInstance, getFirestore} from 'redux-firestore'
+import {ReactReduxFirebaseProvider} from 'react-redux-firebase'
+import {createFirestoreInstance} from 'redux-firestore'
 import app from './firebase'
 
 const rrfConfig = {

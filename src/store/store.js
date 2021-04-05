@@ -1,8 +1,5 @@
 import thunk from 'redux-thunk'
-import {ReactReduxFirebaseProvider, getFirebase} from 'react-redux-firebase'
 import {createStore, applyMiddleware, compose} from 'redux'
-import {createFirestoreInstance, getFirestore} from 'redux-firestore'
-import app from '../firebase'
 import rootReducer from '../Reducers/Index.js'
 
   const composeEnchancer =

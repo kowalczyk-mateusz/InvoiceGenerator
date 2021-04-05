@@ -44,6 +44,8 @@ const ServicesInfo = ({invoiceData, setInvoiceData, services, setServices, overa
         })
 
     }, [services])
+
+
     return (
         <StyledServicesInfo>
         

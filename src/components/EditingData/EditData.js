@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import InvoiceInfo from './InvoiceInfo'
 import SellerInfo from './SellerInfo'
 import BuyerInfo from './BuyerInfo'
 import ServicesInfo from './ServicesInfo'
 import PaymentInfo from './PaymentInfo'
-import {v4 as uuidv4} from 'uuid'
 import {useAuth} from '../../context/AuthContext'
 import {useParams} from 'react-router-dom'
 import app from '../../firebase'
@@ -35,7 +34,6 @@ const EditData = ({singleData, setSingleData}) => {
             ref.doc(id)
             .update(singleData)
     }
-    console.log(singleData)
     return (
         <InvoiceContainer>
             <InvoiceInfo invoiceHandler={invoiceHandler} invoiceData={singleData}/>

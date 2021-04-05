@@ -5,7 +5,7 @@ import {useHistory, Link} from 'react-router-dom'
 const Navigation = () => {
     const history = useHistory()
     const [error, setError] = useState('')
-    const {currentUser, logout} = useAuth()
+    const {logout} = useAuth()
     async function handleLogout(){
         setError('')
         try{
@@ -23,7 +23,7 @@ const Navigation = () => {
                 <Link to="/"><ListItem>Wystaw Fakture</ListItem></Link>
                 <Link to="/documents"><ListItem>Dokumenty</ListItem></Link>
                 <ListItem><UpdateLink to="/update-profile">Zaaktualizuj Profil</UpdateLink></ListItem>
-                <ListItem><LogoutButton  onClick={handleLogout}>Wyloguj się</LogoutButton></ListItem>
+                <ListItem><LogoutButton  onClick={handleLogout}>Wyloguj się</LogoutButton> {error ? error : ''}</ListItem>
             </Menu>
         
           

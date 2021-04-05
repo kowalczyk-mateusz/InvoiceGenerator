@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {Label, Input, Select, Option, Container} from './CommonStyles'
 
 
-const Service = ({id, services,invoiceData, serServices, handleChangeData, setInvoiceData, overall, setOverall}) => {
+const Service = ({id, services,invoiceData, setServices, handleChangeData, setInvoiceData, overall, setOverall}) => {
     
 
 
@@ -21,6 +21,8 @@ const Service = ({id, services,invoiceData, serServices, handleChangeData, setIn
             newData.services.splice(id, 1)
             setInvoiceData({...newData})
         }}
+
+
 
     return (
         <StyledService onBlur={handleChangeData(id)}>
